@@ -57,11 +57,8 @@ PHP_METHOD(Group_Model, testCalled3) {
 
 	ZEPHIR_INIT_THIS();
 
-	zend_class_entry *called_scope = zend_get_called_scope(EG(current_execute_data));
-	if (called_scope) {
-		ZVAL_STR(return_value, zend_string_dup(called_scope->name, 0));
-	}
-	//zephir_get_called_class(return_value TSRMLS_CC);
+
+	zephir_get_called_class(return_value TSRMLS_CC);
 	return;
 
 }

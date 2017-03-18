@@ -14,7 +14,7 @@
 #define PHP_GROUP_VERSION     "1.0.0"
 #define PHP_GROUP_EXTNAME     "group"
 #define PHP_GROUP_AUTHOR      ""
-#define PHP_GROUP_ZEPVERSION  "0.9.6a-dev"
+#define PHP_GROUP_ZEPVERSION  "0.9.6a-dev-1bad5e7742"
 #define PHP_GROUP_DESCRIPTION ""
 
 

@@ -99,7 +99,7 @@ int zephir_zval_is_traversable(zval *object)
 /**
  * Returns the called in class in the current scope
  */
-void zephir_get_called_class(zval *return_value TSRMLS_DC)
+void zephir_get_called_class(zval *return_value)
 {
 #if PHP_VERSION_ID >= 70100
 	zend_class_entry *called_scope = zend_get_called_scope(EG(current_execute_data));
