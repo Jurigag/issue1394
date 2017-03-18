@@ -16,7 +16,7 @@ export CFLAGS="-O0 -g3 -Wall -std=gnu90 -fvisibility=hidden -DZEPHIR_RELEASE=0"
 
 if [ -f Makefile ]; then
 	make --silent clean
-	${PHPIZE_BIN} --silent --clean
+	${PHPIZE_BIN} --clean
 fi
 
 ${PHPIZE_BIN} --silent
