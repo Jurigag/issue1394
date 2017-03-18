@@ -33,9 +33,9 @@ before_install:
 
 install:
   - git clone -q --depth=1 https://github.com/phalcon/zephir.git ./zephir
-  - bash ./install_zephir.sh
+  - bash ./tests/install_zephir.sh
   - zephir fullclean && zephir generate --backend=ZendEngine3
-  - bash install.sh
+  - bash ./tests/install.sh
   - php -m | grep group
 
 before_script:
