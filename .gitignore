@@ -6,6 +6,7 @@ cmake-build-debug
 .libs
 .temp
 
+ext/.deps
 ext/Makefile
 ext/Makefile.fragments
 ext/Makefile.global
@@ -19,8 +20,13 @@ ext/config.status
 ext/config.sub
 ext/configure
 ext/config.guess
+ext/configure.in
 ext/build
 ext/autom4te.cache
 ext/group.la
 ext/libtool
 ext/ltmain.sh
+ext/run-tests.php
+ext/mkinstalldirs
+ext/missing
+ext/install-sh
