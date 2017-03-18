@@ -1,28 +1,24 @@
 #!/usr/bin/env bash
 
+INI_DIR=$(php -i | grep "Scan this dir for additional" | awk -F'=>' '{print $2}')
+
+sudo ulimit -c unlimited || true
+echo "memory_limit=-1" | sudo tee ${INI_DIR}/000-initial.ini
+
 cd ext
 
 export CC="gcc"
-export CFLAGS="-O0 -g3 -Wall -fvisibility=hidden -DZEPHIR_RELEASE=0" # -std=gnu90
+export CFLAGS="-O0 -g3 -Wall -std=gnu90 -fvisibility=hidden -DZEPHIR_RELEASE=0"
 
 if [ -f Makefile ]; then
 	make --silent clean
-	#/usr/bin/phpize --silent --clean
-	/usr/local/bin/phpize --silent --clean
+	phpize --silent --clean
 fi
 
-#/usr/bin/phpize --silent
-#./configure --silent --with-php-config=/usr/bin/php-config --enable-group
-/usr/local/bin/phpize --silent
-./configure --silent --with-php-config=/usr/local/bin/php-config --enable-group
+phpize --silent
+./configure --silent --enable-group
 
 make --silent
-make --silent -j"$(getconf _NPROCESSORS_ONLN)" install
+sudo make --silent -j"$(getconf _NPROCESSORS_ONLN)" install
 
-#echo memory_limit=-1 > /etc/php/7.1/cli/conf.d/000-initial.ini
-#echo extension=group.so > /etc/php/7.1/cli/conf.d/100-group.ini
-
-echo memory_limit=-1 > /usr/local/etc/php/conf.d/000-initial.ini
-echo extension=group.so > /usr/local/etc/php/conf.d/100-group.ini
-
-ulimit -c unlimited
+echo "extension=group.so" | sudo tee ${INI_DIR}/100-group.ini
