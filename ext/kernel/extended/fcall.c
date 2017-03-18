@@ -1199,8 +1199,6 @@ int zephir_call_function_opt(zend_fcall_info *fci, zend_fcall_info_cache *fci_ca
 	//EG(fake_scope) = calling_scope;
 	if (fci_cache->object) {
 		Z_OBJ(call->This) = fci_cache->object;
-	} else {
-		Z_OBJ(call->This) = fci->object;
 	}
 
 	if (UNEXPECTED(func->op_array.fn_flags & ZEND_ACC_CLOSURE)) {
