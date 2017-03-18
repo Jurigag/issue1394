@@ -35,9 +35,14 @@ install:
   - bash install.sh
   - php -m | grep group
 
+before_script:
+  - echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern &> /dev/null
+  - echo "memory_limit=-1" | sudo tee ${INI_DIR}/000-initial.ini
+  - ulimit -c unlimited || true
+
 script:
-  - php test1.php
-  - php test2.php
+  - php tests/test1.php
+  - php tests/test2.php
 
 addons:
   apt:

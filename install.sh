@@ -4,11 +4,6 @@ INI_DIR=$(php -i | grep "Scan this dir for additional" | awk -F'=>' '{print $2}'
 PHPIZE_BIN=`which phpize`
 PHPCONFIG_BIN=`which php-config`
 
-sudo ulimit -c unlimited || true
-
-echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern &> /dev/null
-echo "memory_limit=-1" | sudo tee ${INI_DIR}/000-initial.ini
-
 cd ext
 
 export CC="gcc"
