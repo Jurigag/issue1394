@@ -22,9 +22,13 @@ env:
     - ZEND_DONT_UNLOAD_MODULES=1
     - CC="ccache gcc"
     - PATH="$PATH:~/bin"
+    - LD_LIBRARY_PATH="$TRAVIS_BUILD_DIR/build/lib":$LD_LIBRARY_PATH
+    - LIBRARY_PATH="$TRAVIS_BUILD_DIR/build/lib":$LIBRARY_PATH
+    - C_INCLUDE_PATH="$TRAVIS_BUILD_DIR/build/include"
 
 before_install:
   - phpenv config-rm xdebug.ini || true
+  - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/php /usr/bin/
   - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/phpize /usr/bin/
   - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/php-config /usr/bin/
 
@@ -41,10 +45,14 @@ before_script:
   - ulimit -c unlimited || true
 
 script:
-  - php tests/test1.php
-  - php tests/test2.php
+  - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full php tests/test1.php
+  - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full php tests/test2.php
 
+after_failure:
+  - ./tests/after_failure.sh
 addons:
   apt:
     packages:
       - re2c
+      - valgrind
+      - gdb

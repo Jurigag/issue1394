@@ -7,7 +7,7 @@ PHPCONFIG_BIN=`which php-config`
 cd ext
 
 export CC="gcc"
-export CFLAGS="-O0 -g3 -Wall -std=gnu90 -fvisibility=hidden -DZEPHIR_RELEASE=1"
+export CFLAGS="-O0 -g3 -Wall -std=gnu90 -fno-delete-null-pointer-checks -fvisibility=hidden -DZEPHIR_RELEASE=1"
 
 if [ -f Makefile ]; then
 	make --silent clean
