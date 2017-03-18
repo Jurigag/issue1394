@@ -49,7 +49,7 @@ script:
   - valgrind --read-var-info=yes --error-exitcode=1 --fullpath-after= --track-origins=yes --leak-check=full php tests/test2.php
 
 after_failure:
-  - ./tests/after_failure.sh
+  - bash ./tests/after_failure.sh
 addons:
   apt:
     packages:
