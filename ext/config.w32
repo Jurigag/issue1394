@@ -11,7 +11,7 @@ if (PHP_GROUP != "no") {
     AC_DEFINE("ZEPHIR_USE_PHP_JSON", 1, "Whether PHP json extension is present at compile time");
   }
   
-  ADD_SOURCES(configure_module_dirname + "/group", "model.zep.c", "group");
+  ADD_SOURCES(configure_module_dirname + "/group", "model.zep.c oo.zep.c oodynamica.zep.c", "group");
   ADD_FLAG("CFLAGS_GROUP", "/D ZEPHIR_RELEASE /Oi /Ot /Oy /Ob2 /Gs /GF /Gy /GL");
   ADD_FLAG("CFLAGS", "/D ZEPHIR_RELEASE /Oi /Ot /Oy /Ob2 /Gs /GF /Gy /GL");
   ADD_FLAG("LDFLAGS", "/LTCG");

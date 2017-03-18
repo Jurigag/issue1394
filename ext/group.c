@@ -24,6 +24,8 @@
 
 
 zend_class_entry *group_model_ce;
+zend_class_entry *group_oo_ce;
+zend_class_entry *group_oodynamica_ce;
 
 ZEND_DECLARE_MODULE_GLOBALS(group)
 
@@ -35,6 +37,8 @@ static PHP_MINIT_FUNCTION(group)
 {
 	REGISTER_INI_ENTRIES();
 	ZEPHIR_INIT(Group_Model);
+	ZEPHIR_INIT(Group_Oo);
+	ZEPHIR_INIT(Group_OoDynamicA);
 	return SUCCESS;
 }
 
