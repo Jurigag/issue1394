@@ -1,6 +1,4 @@
-#!/usr/local/bin/php
 <?php
-
 class Phpized extends Group\Model {
 
 }
