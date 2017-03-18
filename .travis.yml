@@ -24,6 +24,7 @@ env:
     - PATH="$PATH:~/bin"
 
 before_install:
+  - phpenv config-rm xdebug.ini || true
   - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/phpize /usr/bin/
   - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/php-config /usr/bin/
 
@@ -32,7 +33,7 @@ install:
   - bash ./install_zephir.sh
   - zephir fullclean && zephir generate --backend=ZendEngine3
   - bash install.sh
-  - php -m
+  - php -m | grep group
 
 script:
   - php test1.php
