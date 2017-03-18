@@ -28,7 +28,6 @@ env:
 
 before_install:
   - phpenv config-rm xdebug.ini || true
-  - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/php /usr/bin/
   - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/phpize /usr/bin/
   - sudo ln -s /home/travis/.phpenv/versions/$(phpenv version-name)/bin/php-config /usr/bin/
 

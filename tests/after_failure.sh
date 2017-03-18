@@ -5,7 +5,7 @@ export LC_ALL=C
 
 for i in /tmp/core_*; do
 	if [ -f "$i" -a "$(file "$i" | grep -o 'core file')" ]; then
-		gdb -q $(which php) "$i" <<EOF
+		gdb -q php "$i" <<EOF
 set pagination 0
 backtrace full
 info registers

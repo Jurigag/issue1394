@@ -3,8 +3,9 @@
 INI_DIR=$(php -i | grep "Scan this dir for additional" | awk -F'=>' '{print $2}')
 PHPIZE_BIN=`which phpize`
 PHPCONFIG_BIN=`which php-config`
+CURRENT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-cd ext
+cd ${CURRENT_DIR}/../ext
 
 export CC="gcc"
 export CFLAGS="-O0 -g3 -Wall -std=gnu90 -fno-delete-null-pointer-checks -fvisibility=hidden -DZEPHIR_RELEASE=1"
