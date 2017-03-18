@@ -12,7 +12,7 @@ echo "memory_limit=-1" | sudo tee ${INI_DIR}/000-initial.ini
 cd ext
 
 export CC="gcc"
-export CFLAGS="-O0 -g3 -Wall -std=gnu90 -fvisibility=hidden -DZEPHIR_RELEASE=0"
+export CFLAGS="-O0 -g3 -Wall -std=gnu90 -fvisibility=hidden -DZEPHIR_RELEASE=1"
 
 if [ -f Makefile ]; then
 	make --silent clean

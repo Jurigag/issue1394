@@ -9,11 +9,11 @@ class Oo
 		return o;
 	}
 
-    public function testInstance12()
-    {
-        var o;
-        let o = OoDynamicA::call1();
+	public function testInstance12()
+	{
+		var o;
+		let o = \Group\OoDynamicA::call1();
 
-        return o;
-    }
+		return o;
+	}
 }
