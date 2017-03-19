@@ -893,7 +893,7 @@ static zend_bool zephir_is_info_callable_ex(zephir_fcall_info *info, zend_fcall_
 			fcc->called_scope = called_scope;
 			fcc->calling_scope = scope;
 			if (!fcc->object) {
-				fcc->object = Z_OBJ(EG(current_execute_data)->This);
+				fcc->object = zend_get_this_object(EG(current_execute_data));
 			}
 			if ((fcc->function_handler = zend_hash_str_find_ptr(&fcc->calling_scope->function_table, info->func_name, info->func_length)) != NULL) {
 				if (fcc == &fcc_local &&
