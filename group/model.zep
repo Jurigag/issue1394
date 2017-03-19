@@ -2,17 +2,17 @@ namespace Group;
 
 abstract class Model
 {
-	public function testCalled()
+	public function fistFunc()
 	{
-		return self::testCalled3();
+		return self::thirdFunc();
 	}
 
-	public static function testCalled2()
+	public static function secondFun()
 	{
-		return self::testCalled3();
+		return self::thirdFunc();
 	}
 
-	protected static function testCalled3()
+	protected static function thirdFunc()
 	{
 		return get_called_class();
 	}

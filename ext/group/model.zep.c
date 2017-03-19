@@ -25,7 +25,7 @@ ZEPHIR_INIT_CLASS(Group_Model) {
 
 }
 
-PHP_METHOD(Group_Model, testCalled) {
+PHP_METHOD(Group_Model, fistFunc) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	ZEPHIR_INIT_THIS();
@@ -33,13 +33,13 @@ PHP_METHOD(Group_Model, testCalled) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_RETURN_CALL_SELF("testcalled3", NULL, 0);
+	ZEPHIR_RETURN_CALL_SELF("thirdfunc", NULL, 0);
 	zephir_check_call_status();
 	RETURN_MM();
 
 }
 
-PHP_METHOD(Group_Model, testCalled2) {
+PHP_METHOD(Group_Model, secondFun) {
 
 	int ZEPHIR_LAST_CALL_STATUS;
 	ZEPHIR_INIT_THIS();
@@ -47,13 +47,13 @@ PHP_METHOD(Group_Model, testCalled2) {
 
 	ZEPHIR_MM_GROW();
 
-	ZEPHIR_RETURN_CALL_SELF("testcalled3", NULL, 0);
+	ZEPHIR_RETURN_CALL_SELF("thirdfunc", NULL, 0);
 	zephir_check_call_status();
 	RETURN_MM();
 
 }
 
-PHP_METHOD(Group_Model, testCalled3) {
+PHP_METHOD(Group_Model, thirdFunc) {
 
 	ZEPHIR_INIT_THIS();
 
@@ -64,5 +64,6 @@ PHP_METHOD(Group_Model, testCalled3) {
 	}
 
 	return;
+
 }
 
