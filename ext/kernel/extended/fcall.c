@@ -1197,13 +1197,11 @@ int zephir_call_function_opt(zend_fcall_info *fci, zend_fcall_info_cache *fci_ca
 
 #if PHP_VERSION_ID >= 70100
 	//EG(fake_scope) = calling_scope;
-	/*
 	if (fci_cache->object) {
 		Z_OBJ(call->This) = fci_cache->object;
 	} else {
 		Z_OBJ(call->This) = fci->object;
 	}
-	*/
 
 	if (UNEXPECTED(func->op_array.fn_flags & ZEND_ACC_CLOSURE)) {
 		ZEND_ASSERT(GC_TYPE((zend_object*)func->op_array.prototype) == IS_OBJECT);
