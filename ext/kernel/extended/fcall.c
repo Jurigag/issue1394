@@ -264,7 +264,7 @@ static int zephir_is_callable_check_class(const char *name, int name_len, zend_f
 	zend_class_entry *scope, *called_scope;
 	char *lcname = zend_str_tolower_dup(name, name_len);
 #if PHP_VERSION_ID >= 70100
-	scope = EG(fake_scope);
+	scope = zend_get_executed_scope();
 	called_scope = zend_get_called_scope(EG(current_execute_data));
 #else
 	scope = EG(scope);
@@ -1123,7 +1123,7 @@ int zephir_call_function_opt(zend_fcall_info *fci, zend_fcall_info_cache *fci_ca
 	func = fci_cache->function_handler;
 #if PHP_VERSION_ID >= 70100
 	fci->object = (func->common.fn_flags & ZEND_ACC_STATIC) ? NULL : fci_cache->object;
-	call = zend_vm_stack_push_call_frame(ZEND_CALL_TOP_FUNCTION, func, fci->param_count, fci_cache->called_scope, fci->object);
+	call = zend_vm_stack_push_call_frame(ZEND_CALL_TOP_FUNCTION | ZEND_CALL_DYNAMIC, func, fci->param_count, fci_cache->called_scope, fci->object);
 #else
         call = zend_vm_stack_push_call_frame(ZEND_CALL_TOP_FUNCTION,
 		func, fci->param_count, fci_cache->called_scope, fci_cache->object);
@@ -1197,11 +1197,13 @@ int zephir_call_function_opt(zend_fcall_info *fci, zend_fcall_info_cache *fci_ca
 
 #if PHP_VERSION_ID >= 70100
 	//EG(fake_scope) = calling_scope;
+	/*
 	if (fci_cache->object) {
 		Z_OBJ(call->This) = fci_cache->object;
 	} else {
 		Z_OBJ(call->This) = fci->object;
 	}
+	*/
 
 	if (UNEXPECTED(func->op_array.fn_flags & ZEND_ACC_CLOSURE)) {
 		ZEND_ASSERT(GC_TYPE((zend_object*)func->op_array.prototype) == IS_OBJECT);

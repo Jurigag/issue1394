@@ -309,7 +309,7 @@ ZEPHIR_ATTR_NONNULL static void zephir_fcall_populate_fci_cache(zend_fcall_info_
 			if (called_scope) {
 				fcic->called_scope  = called_scope;
 				fcic->calling_scope = called_scope;
-				fcic->object        = fci->object ? fci->object : Z_OBJ(EG(current_execute_data)->This);
+				fcic->object        = fci->object ? fci->object : zend_get_this_object(EG(current_execute_data));
 				fcic->initialized   = 1;
 			}
 
